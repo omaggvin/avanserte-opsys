@@ -1,3 +1,4 @@
+nasm
 extern main
 
 global _start

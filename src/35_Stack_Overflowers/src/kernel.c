@@ -1,9 +1,7 @@
 #include "libc/stdint.h"
 #include "libc/stddef.h"
 #include "libc/stdbool.h"
-#include <multiboot2.h>
-
-
+#include "multiboot2.h"
 
 struct multiboot_info {
     uint32_t size;
@@ -19,7 +17,7 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
   //monitor_initialize();
   
   // Initialize the Global Descriptor Table (GDT).
-  // init_gdt();
+  init_gdt();
 
   // Initialize the Interrupt Descriptor Table (IDT).
   //init_irq();
@@ -42,5 +40,3 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
   // Call the C++ main function of the kernel.
   return kernel_main();
 }
-
-    

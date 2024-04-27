@@ -1,7 +1,7 @@
 {
     "cmake.buildDirectory": "${workspaceFolder}/build/35_Stack_Overflowers",
     "cmake.sourceDirectory": "${workspaceFolder}/src/35_Stack_Overflowers",
-    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.errorSquiggles": "enabled",
     "files.associations": {
         "cstddef": "cpp",
         "*.tcc": "cpp",

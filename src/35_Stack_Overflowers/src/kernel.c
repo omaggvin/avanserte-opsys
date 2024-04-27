@@ -2,7 +2,7 @@
 #include "libc/stddef.h"
 #include "libc/stdbool.h"
 #include "multiboot2.h"
-
+#include "gdt.h"
 struct multiboot_info {
     uint32_t size;
     uint32_t reserved;

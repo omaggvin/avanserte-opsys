@@ -34,7 +34,7 @@ _start:
     cli
 
     mov esp, stack_top
-
+    
 	push ebx
 	push eax
     call main ; Jump main function

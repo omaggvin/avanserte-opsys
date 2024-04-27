@@ -25,7 +25,7 @@ void init_gdt() {
     gdt_load(&gdt_ptr);
 	
 	// Flush GDT pointer
-    gdt_flush((uint32_t)&gdt_ptr);
+    //gdt_flush((uint32_t)&gdt_ptr);
 }
 
 void gdt_load(struct gdt_ptr *gdt_ptr) {

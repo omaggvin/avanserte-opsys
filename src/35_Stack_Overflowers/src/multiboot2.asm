@@ -29,7 +29,6 @@ header_end:
 
 section .text
 bits 32
-
 _start:
     cli
 

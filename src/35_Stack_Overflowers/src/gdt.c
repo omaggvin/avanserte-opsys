@@ -9,6 +9,17 @@
 struct gdt_entry gdt[GDT_ENTRIES];
 struct gdt_ptr gdt_ptr;
 
+extern void gdt_flush(uint32_t);
+
+void gdt_flush(uint32_t gdt_ptr) {
+    asm volatile("lgdt (%0)" : : "r" (gdt_ptr));
+    asm volatile("mov $0x10, %ax");    // Assuming 0x10 is your data segment selector
+    asm volatile("mov %ax, %ds");
+    asm volatile("mov %ax, %es");
+    asm volatile("mov %ax, %ss");
+    asm volatile("jmp $0x08, $flush_segments");  // Assuming 0x08 is your code segment selector
+    asm("flush_segments:");
+}
 void init_gdt() {
     // Set the GDT limit
     gdt_ptr.limit = sizeof(struct gdt_entry) * GDT_ENTRIES - 1;
@@ -25,7 +36,7 @@ void init_gdt() {
     gdt_load(&gdt_ptr);
 	
 	// Flush GDT pointer
-    //gdt_flush((uint32_t)&gdt_ptr);
+    gdt_flush((uint32_t)&gdt_ptr);
 }
 
 void gdt_load(struct gdt_ptr *gdt_ptr) {

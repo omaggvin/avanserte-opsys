@@ -1,5 +1,5 @@
-nasm
 extern main
+
 
 global _start
 
@@ -37,7 +37,6 @@ _start:
 
 	push ebx
 	push eax
-
     call main ; Jump main function
 
 section .bss

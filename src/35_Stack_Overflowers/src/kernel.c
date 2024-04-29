@@ -3,6 +3,7 @@
 #include "libc/stdbool.h"
 #include "multiboot2.h"
 #include "gdt.h"
+#include "terminal_write.h"
 struct multiboot_info {
     uint32_t size;
     uint32_t reserved;
@@ -35,7 +36,7 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
   //init_pit(); // <------ THIS IS PART OF THE ASSIGNMENT
 
   // Print a hello world message.
-  //printf("Hello World!\n");
+  terminal_write("hello world");
 
   // Call the C++ main function of the kernel.
   return kernel_main();

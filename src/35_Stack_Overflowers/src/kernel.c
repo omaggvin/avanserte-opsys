@@ -4,7 +4,6 @@
 #include "libc/stdio.h"
 #include "multiboot2.h"
 #include "gdt.h"
-#include "terminal_write.h"
 #include "libc/string.h"
 struct multiboot_info
 {

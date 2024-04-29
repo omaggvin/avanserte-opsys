@@ -62,6 +62,7 @@ add_executable(uiaos-kernel
     src/kernel.c
 	src/kernel.cpp
 	src/gdt.c
+	src/gdt.asm
 	
 )
 

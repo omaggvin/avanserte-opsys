@@ -38,8 +38,6 @@ int main(uint32_t magic, struct multiboot_info *mb_info_addr)
   // init_pit(); // <------ THIS IS PART OF THE ASSIGNMENT
 
   // Print a hello world message.
-  //terminal_write("hello world");
-
   printf("hello world! \n");
 
   // Call the C++ main function of the kernel.

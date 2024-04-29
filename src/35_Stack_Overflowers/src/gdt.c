@@ -45,13 +45,13 @@ void gdt_load(struct gdt_ptr *gdt_ptr) {
 
 void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)
 {
+    gdt[num].base_high   = ((base >> 24) & 0xFF);
+    gdt[num].base_middle = ((base >> 16) & 0xFF);
     gdt[num].base_low    = (base & 0xFFFF);
-    gdt[num].base_middle = (base >> 16) & 0xFF;
-    gdt[num].base_high   = (base >> 24) & 0xFF;
+    gdt[num].limit_low   = ((limit & 0xFFFF));
+    
+    gdt[num].access      = (access);
 
-    gdt[num].limit_low   = (limit & 0xFFFF);
-    gdt[num].granularity = (limit >> 16) & 0x0F;
-
-    gdt[num].granularity |= gran & 0xF0;
-    gdt[num].access      = access;
+    gdt[num].granularity = ((limit >> 16) & 0x0F);
+    gdt[num].granularity |= (gran & 0xF0);
 }

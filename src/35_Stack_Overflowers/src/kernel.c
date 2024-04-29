@@ -1,8 +1,10 @@
 #include "libc/stdint.h"
 #include "libc/stddef.h"
 #include "libc/stdbool.h"
+#include "libc/stdio.h"
 #include "multiboot2.h"
 #include "gdt.h"
+#include "libc/string.h"
 struct multiboot_info {
     uint32_t size;
     uint32_t reserved;
@@ -35,7 +37,11 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
   //init_pit(); // <------ THIS IS PART OF THE ASSIGNMENT
 
   // Print a hello world message.
-  //printf("Hello World!\n");
+
+  printf("hello world! \n");
+
+ 
+
 
   // Call the C++ main function of the kernel.
   return kernel_main();

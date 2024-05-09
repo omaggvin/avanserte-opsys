@@ -23,7 +23,7 @@ int main(uint32_t magic, struct multiboot_info *mb_info_addr)
   init_gdt();
 
   // Initialize the Interrupt Descriptor Table (IDT).
-   init_irq();
+   //init_irq();
 
   // Initialize the kernel's memory manager using the end address of the kernel.
   // init_kernel_memory(&end); // <------ THIS IS PART OF THE ASSIGNMENT

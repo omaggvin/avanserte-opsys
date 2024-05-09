@@ -3,7 +3,7 @@
 #include "libc/stdbool.h"
 #include "libc/stdio.h"
 #include "multiboot2.h"
-#include "gdt.h"
+#include "descriptor_tables/gdt.h"
 #include "libc/string.h"
 struct multiboot_info
 {
@@ -23,7 +23,7 @@ int main(uint32_t magic, struct multiboot_info *mb_info_addr)
   init_gdt();
 
   // Initialize the Interrupt Descriptor Table (IDT).
-  // init_irq();
+   init_irq();
 
   // Initialize the kernel's memory manager using the end address of the kernel.
   // init_kernel_memory(&end); // <------ THIS IS PART OF THE ASSIGNMENT

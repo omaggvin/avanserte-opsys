@@ -61,8 +61,9 @@ add_executable(uiaos-kernel
     src/multiboot2.asm 
     src/kernel.c
 	src/kernel.cpp
-	src/gdt.c
-	src/gdt.asm
+	src/descriptor_tables/gdt.c
+	src/descriptor_tables/gdt_flush.asm
+	src/descriptor_tables/idt_flush.asm
 	
 	include/libc/stdio.c
 	include/libc/string.c

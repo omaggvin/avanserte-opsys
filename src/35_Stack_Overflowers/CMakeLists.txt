@@ -61,10 +61,19 @@ add_executable(uiaos-kernel
     src/multiboot2.asm 
     src/kernel.c
 	src/kernel.cpp
-	src//gdt.c
+
+	src/gdt.c
+	src/idt.c
+	src/irq.c
+	src/common.c
+
 	src/gdt_flush.asm
 	src/idt_flush.asm
-	
+	src/idt.c
+	src/irq.c
+	src/isr.c
+	src/isr.asm
+
 	include/libc/stdio.c
 	include/libc/string.c
 )

@@ -62,17 +62,15 @@ add_executable(uiaos-kernel
     src/kernel.c
 	src/kernel.cpp
 
-	src/gdt.c
-	src/idt.c
-	src/irq.c
+	src/gdt/gdt.c
+	src/idt/idt.c
+	src/idt/irq.c
+	src/idt/isr.c
 	src/common.c
 
-	src/gdt_flush.asm
-	src/idt_flush.asm
-	src/idt.c
-	src/irq.c
-	src/isr.c
-	src/isr.asm
+	src/gdt/gdt_flush.asm
+	src/idt/idt_flush.asm
+	src/idt/isr.asm
 
 	include/libc/stdio.c
 	include/libc/string.c

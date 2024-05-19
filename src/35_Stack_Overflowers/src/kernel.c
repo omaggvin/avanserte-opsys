@@ -3,8 +3,9 @@
 #include "libc/stdbool.h"
 #include "libc/stdio.h"
 #include "multiboot2.h"
-#include "descriptor_tables/gdt.h"
+#include "descriptor_tables.h"
 #include "libc/string.h"
+
 struct multiboot_info
 {
   uint32_t size;

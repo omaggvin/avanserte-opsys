@@ -1,5 +1,5 @@
-#include "libc/stdio.h"
-#include "libc/string.h"
+#include "stdio.h"
+#include "string.h"
 #include "libc/stdarg.h"
 
 uint16_t* video_memory_offset = (uint16_t*)0xB8000;

@@ -1,9 +1,9 @@
 #include "libc/stdint.h"
 #include "libc/stddef.h"
 #include "libc/stdbool.h"
-#include "libc/stdio.h"
+#include "stdio.h"
 #include "multiboot2.h"
-#include "libc/string.h"
+#include "string.h"
 #include "descriptor_tables.h"
 #include "interrupts.h"
 

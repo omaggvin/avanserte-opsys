@@ -1,7 +1,7 @@
 #pragma once
 
 #include "libc/stdint.h"
-#include "stdbool.h" // for bool
+#include "libc/stdbool.h" // for bool
 
 
 int putchar(int ic);

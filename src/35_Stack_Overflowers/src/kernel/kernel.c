@@ -6,6 +6,7 @@
 #include "string.h"
 #include "descriptor_tables.h"
 #include "interrupts.h"
+#include "pit.h"
 
 struct multiboot_info
 {
@@ -37,7 +38,7 @@ int main(uint32_t magic, struct multiboot_info *mb_info_addr)
   // print_memory_layout(); // <------ THIS IS PART OF THE ASSIGNMENT
 
   // Initialize PIT
-  // init_pit(); // <------ THIS IS PART OF THE ASSIGNMENT
+  init_pit(); // <------ THIS IS PART OF THE ASSIGNMENT
 
   // Print a hello world message.
   printf("hello world! \n");

@@ -1,3 +1,16 @@
+
+extern "C"{
+    #include "system.h"
+    //#include "memory/memory.h"
+    #include "common.h"
+    #include "interrupts.h"
+    #include "input.h"
+    //#include "song/song.h"
+    #include "string.h"
+    #include "pit.h"
+}
+
+
 // Existing global operator new overloads
 //void* operator new(size_t size) {
   //  return malloc(size);
@@ -29,16 +42,24 @@
 
 extern "C" int kernel_main(void);
 int kernel_main(){
+
+    // Set up interrupt handlers
+    register_interrupt_handler(3, [](registers_t* regs, void* context) {
+        printf("Interrupt 3 - OK\n");
+    }, NULL);
+
+    register_interrupt_handler(4, [](registers_t* regs, void* context) {
+        printf("Interrupt 4 - OK\n");
+    }, NULL);
     
-    // Allocate some memory using the kernel memory manager
-	// THIS IS PART OF THE ASSIGNMENT
-    //void* some_memory = malloc(12345); 
-    //void* memory2 = malloc(54321); 
-    //void* memory3 = malloc(13331);
-    //char* memory4 = new char[1000]();
-	
+    // Trigger interrupts to test handlers
+    asm volatile ("int $0x3");
+    printf("%f");
+    sleep_interrupt(1000);
+    asm volatile ("int $0x4");
 
-		// More code....
-  return 0;
+    // Enable interrupts
+    asm volatile("sti");
+
+    return 0;
 }
-

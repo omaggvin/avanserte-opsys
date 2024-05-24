@@ -67,6 +67,8 @@ add_executable(uiaos-kernel
 	src/idt/irq.c
 	src/idt/isr.c
 	src/common.c
+	src/pit/pit.c
+	src/io/input.c
 
 	src/gdt/gdt_flush.asm
 	src/idt/idt_flush.asm

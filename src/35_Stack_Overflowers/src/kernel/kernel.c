@@ -8,6 +8,7 @@
 #include "interrupts.h"
 #include "pit.h"
 
+
 struct multiboot_info
 {
   uint32_t size;
@@ -20,7 +21,7 @@ int kernel_main();
 int main(uint32_t magic, struct multiboot_info *mb_info_addr)
 {
   // Initialize the monitor (screen output)
-  // monitor_initialize();
+  monitor_initialize();
 
   // Initialize the Global Descriptor Table (GDT).
   init_gdt();

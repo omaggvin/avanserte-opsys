@@ -2,10 +2,7 @@
 #include "interrupts.h"
 #include "common.h"
 
-
 extern void idt_flush(uint32_t);
-
-
 
 void init_idt() {
   // Set the IDT limit

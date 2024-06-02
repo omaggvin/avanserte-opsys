@@ -70,14 +70,23 @@ add_executable(uiaos-kernel
 	src/pit/pit.c
 	src/io/input.c
 	src/io/common.c
+
+	src/memory/malloc.c
+	src/memory/memutils.c
+	src/memory/paging.c
 	
 	src/gdt/gdt_flush.asm
 	src/idt/idt_flush.asm
 	src/idt/isr.asm
-
-	src/terminal/stdio.c
-	src/terminal/string.c
+	
 	src/terminal/monitor.c
+
+	src/libc/panic.c
+	src/libc/system.c
+	src/libc/stdio.c
+	src/libc/string.c
+
+	src/song/song.c
 )
 
 # Include directories for the kernel target

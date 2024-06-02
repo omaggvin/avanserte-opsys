@@ -51,6 +51,21 @@
 },
 {
   "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/memory/malloc.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/memory/malloc.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/memory/malloc.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/memory/memutils.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/memory/memutils.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/memory/memutils.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/memory/paging.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/memory/paging.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/memory/paging.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
   "command": "/usr/bin/nasm -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -f elf32 -o CMakeFiles/uiaos-kernel.dir/src/gdt/gdt_flush.asm.o /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/gdt/gdt_flush.asm",
   "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/gdt/gdt_flush.asm"
 },
@@ -66,17 +81,32 @@
 },
 {
   "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
-  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/terminal/stdio.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/terminal/stdio.c",
-  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/terminal/stdio.c"
-},
-{
-  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
-  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/terminal/string.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/terminal/string.c",
-  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/terminal/string.c"
-},
-{
-  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
   "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/terminal/monitor.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/terminal/monitor.c",
   "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/terminal/monitor.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/libc/panic.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/panic.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/panic.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/libc/system.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/system.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/system.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/libc/stdio.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/stdio.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/stdio.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/libc/string.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/string.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/libc/string.c"
+},
+{
+  "directory": "/workspaces/avanserte-opsys/build/35_Stack_Overflowers",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/avanserte-opsys/src/35_Stack_Overflowers/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/song/song.c.o -c /workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/song/song.c",
+  "file": "/workspaces/avanserte-opsys/src/35_Stack_Overflowers/src/song/song.c"
 }
 ]

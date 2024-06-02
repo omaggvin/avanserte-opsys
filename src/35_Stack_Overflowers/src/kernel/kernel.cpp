@@ -8,8 +8,6 @@ extern "C"{
     #include "song.h"
 }
 
-
-
 // Existing global operator new overloads
 void* operator new(size_t size) {
     return malloc(size);

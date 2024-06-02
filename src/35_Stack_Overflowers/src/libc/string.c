@@ -1,6 +1,8 @@
 #include "libc/stdarg.h"
 #include "system.h"
 
+
+// convert hex to string
 char* hex32_to_str(char buffer[], unsigned int val)
 {
 	char const lut[] = "0123456789ABCDEF";
@@ -13,6 +15,7 @@ char* hex32_to_str(char buffer[], unsigned int val)
 	return buffer;
 }
 
+// convetr int to string
 char* int32_to_str(char buffer[], int val)
 {
 	char* b = buffer;
@@ -29,7 +32,7 @@ char* int32_to_str(char buffer[], int val)
 	} while (val);
 	return buffer;
 }
-
+// calculate length of string
 size_t strlen(const char* str) {
 	size_t len = 0;
 	while (str[len])

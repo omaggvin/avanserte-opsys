@@ -22,13 +22,7 @@ void isr_handler(registers_t regs)
 
         intrpt.handler(&regs, intrpt.data);
     }
-    else
-    {
-        /*monitor_write("unhandled interrupt: ");
-        monitor_write_hex(int_no);
-        monitor_put('\n');
-        for(;;);*/
-    }
+    
 }
 
 

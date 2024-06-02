@@ -70,6 +70,7 @@ add_executable(uiaos-kernel
 	src/pit/pit.c
 	src/io/input.c
 	src/io/common.c
+	src/io/monitor.c
 
 	src/memory/malloc.c
 	src/memory/memutils.c
@@ -78,8 +79,6 @@ add_executable(uiaos-kernel
 	src/gdt/gdt_flush.asm
 	src/idt/idt_flush.asm
 	src/idt/isr.asm
-	
-	src/terminal/monitor.c
 
 	src/libc/panic.c
 	src/libc/system.c

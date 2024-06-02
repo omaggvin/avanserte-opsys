@@ -3,6 +3,7 @@
 
 #define MAX_PAGE_ALIGNED_ALLOCS 32
 
+// Global variables to initially manage memory
 uint32_t last_alloc = 0;
 uint32_t heap_end = 0;
 uint32_t heap_begin = 0;
@@ -14,39 +15,39 @@ uint32_t memory_used = 0;
 // Initialize the kernel memory manager
 void init_kernel_memory(uint32_t* kernel_end)
 {
-    last_alloc = kernel_end + 0x1000;
-    heap_begin = last_alloc;
-    pheap_end = 0x400000;
-    pheap_begin = pheap_end - (MAX_PAGE_ALIGNED_ALLOCS * 4096);
-    heap_end = pheap_begin;
-    memset((char *)heap_begin, 0, heap_end - heap_begin);
-    pheap_desc = (uint8_t *)malloc(MAX_PAGE_ALIGNED_ALLOCS);
-    printf("Kernel heap starts at 0x%x\n", last_alloc);
+    last_alloc = kernel_end + 0x1000; // Set last allocation address after kernel end
+    heap_begin = last_alloc; // Set heap start address after last allocation
+    pheap_end = 0x400000; // Set end of page-aligned heap
+    pheap_begin = pheap_end - (MAX_PAGE_ALIGNED_ALLOCS * 4096); // Calculate start of page-aligned heap
+    heap_end = pheap_begin; // heap ends where pheap begins
+    memset((char *)heap_begin, 0, heap_end - heap_begin); // Clear the heap
+    pheap_desc = (uint8_t *)malloc(MAX_PAGE_ALIGNED_ALLOCS);  // Allocate memory for page descriptors
+    printf("Kernel heap starts at 0x%x\n", last_alloc); // Print adress of start of the heap
 }
 
 // Print the current memory layout
 void print_memory_layout()
 {
-    printf("Memory used: %d bytes\n", memory_used);
-    printf("Memory free: %d bytes\n", heap_end - heap_begin - memory_used);
-    printf("Heap size: %d bytes\n", heap_end - heap_begin);
-    printf("Heap start: 0x%x\n", heap_begin);
-    printf("Heap end: 0x%x\n", heap_end);
-    printf("PHeap start: 0x%x\nPHeap end: 0x%x\n", pheap_begin, pheap_end);
+    printf("Memory used: %d bytes\n", memory_used); // Print the amount of memory used
+    printf("Memory free: %d bytes\n", heap_end - heap_begin - memory_used); // Print the amount of free memory 
+    printf("Heap size: %d bytes\n", heap_end - heap_begin); // Print the total heap size
+    printf("Heap start: 0x%x\n", heap_begin); // Print the start of the heap
+    printf("Heap end: 0x%x\n", heap_end); // Print the end of the heap
+    printf("PHeap start: 0x%x\nPHeap end: 0x%x\n", pheap_begin, pheap_end); // Print the start and end of the page-aligned heap
 }
 
 // Free a block of memory
 void free(void *mem)
 {
-    alloc_t *alloc = (mem - sizeof(alloc_t));
-    memory_used -= alloc->size + sizeof(alloc_t);
-    alloc->status = 0;
+    alloc_t *alloc = (mem - sizeof(alloc_t));  // Get the allocation header
+    memory_used -= alloc->size + sizeof(alloc_t); 
+    alloc->status = 0; // Mark the block as free
 }
 
 // Free a block of page-aligned memory
 void pfree(void *mem)
 {
-    if(mem < pheap_begin || mem > pheap_end) return;
+    if(mem < pheap_begin || mem > pheap_end) return; // Validate the memory address
 
     // Determine the page ID
     uint32_t ad = (uint32_t)mem;
@@ -63,12 +64,12 @@ char* pmalloc(size_t size)
     // Loop through the available list
     for(int i = 0; i < MAX_PAGE_ALIGNED_ALLOCS; i++)
     {
-        if(pheap_desc[i]) continue;
-        pheap_desc[i] = 1;
-        printf("PAllocated from 0x%x to 0x%x\n", pheap_begin + i*4096, pheap_begin + (i+1)*4096);
-        return (char *)(pheap_begin + i*4096);
+        if(pheap_desc[i]) continue; // Skip if the page is already allocated
+        pheap_desc[i] = 1; // Mark the page as allocated
+        printf("PAllocated from 0x%x to 0x%x\n", pheap_begin + i*4096, pheap_begin + (i+1)*4096); // Print allocation info
+        return (char *)(pheap_begin + i*4096); // Return the allocated memory address
     }
-    printf("pmalloc: FATAL: failure!\n");
+    printf("pmalloc: FATAL: failure!\n"); // Print error if allocation fails
     return 0;
 }
 
@@ -76,21 +77,21 @@ char* pmalloc(size_t size)
 // Allocate a block of memory
 void* malloc(size_t size)
 {
-    if(!size) return 0;
+    if(!size) return 0; // Return null if size is zero
 
     // Loop through blocks to find an available block with enough size
     uint8_t *mem = (uint8_t *)heap_begin;
     while((uint32_t)mem < last_alloc)
     {
-        alloc_t *a = (alloc_t *)mem;
+        alloc_t *a = (alloc_t *)mem; // Get the allocation header
         printf("mem=0x%x a={.status=%d, .size=%d}\n", mem, a->status, a->size);
 
         if(!a->size)
             goto nalloc;
         if(a->status) {
-            mem += a->size;
+            mem += a->size; // Move to the next block
             mem += sizeof(alloc_t);
-            mem += 4;
+            mem += 4; // Skip padding
             continue;
         }
         // If the block is not allocated and its size is big enough,
@@ -113,17 +114,17 @@ void* malloc(size_t size)
     nalloc:;
     if(last_alloc + size + sizeof(alloc_t) >= heap_end)
     {
-        panic("Cannot allocate bytes! Out of memory.\n");
+        panic("Cannot allocate bytes! Out of memory.\n"); // Panic if out of memory
     }
-    alloc_t *alloc = (alloc_t *)last_alloc;
-    alloc->status = 1;
-    alloc->size = size;
+    alloc_t *alloc = (alloc_t *)last_alloc; // Get the next allocation block
+    alloc->status = 1; // Mark the block as allocated
+    alloc->size = size; // Set the size of the block
 
-    last_alloc += size;
-    last_alloc += sizeof(alloc_t);
-    last_alloc += 4;
-    printf("Allocated %d bytes from 0x%x to 0x%x\n", size, (uint32_t)alloc + sizeof(alloc_t), last_alloc);
-    memory_used += size + 4 + sizeof(alloc_t);
-    memset((char *)((uint32_t)alloc + sizeof(alloc_t)), 0, size);
-    return (char *)((uint32_t)alloc + sizeof(alloc_t));
+    last_alloc += size; // Update the last allocation address
+    last_alloc += sizeof(alloc_t); // Include the allocation header size
+    last_alloc += 4; 
+    printf("Allocated %d bytes from 0x%x to 0x%x\n", size, (uint32_t)alloc + sizeof(alloc_t), last_alloc); // Print allocation info
+    memory_used += size + 4 + sizeof(alloc_t); // Update the used memory count
+    memset((char *)((uint32_t)alloc + sizeof(alloc_t)), 0, size); // Clear the allocated memory
+    return (char *)((uint32_t)alloc + sizeof(alloc_t)); // Return the allocated memory address
 }

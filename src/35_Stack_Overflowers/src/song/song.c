@@ -1,5 +1,4 @@
 #include "song.h"
-
 #include "pit.h"
 #include "common.h"
 #include "stdio.h"
@@ -22,6 +21,7 @@ void enable_speaker(){
     }
 }
 
+// disable the PC speaker
 void disable_speaker() {
     // Turn off the PC speaker
     uint8_t speaker_state = inb(PC_SPEAKER_PORT);
@@ -29,11 +29,13 @@ void disable_speaker() {
 }
 
 
+// play a sound of a given frequency
 void play_sound(uint32_t frequency) {
     if (frequency == 0) {
-        return;
+        return; // Do nothing if frequency is 0
     }
 
+    // Calculate the divisor needed to set the desired frequency
     uint16_t divisor = (uint16_t)(PIT_BASE_FREQUENCY / frequency);
 
     // Set up the PIT
@@ -46,28 +48,29 @@ void play_sound(uint32_t frequency) {
     outb(PC_SPEAKER_PORT, speaker_state | 0x03);
 }
 
+// Function to stop the sound
 void stop_sound(){
     // Stop the sound by disabling the gate to the speaker
     uint8_t speaker_state = inb(PC_SPEAKER_PORT);
     outb(PC_SPEAKER_PORT, speaker_state & ~0x03); // Clear bits 0 and 1
 }
 
+// Function to play a song by iterating through its notes
 void play_song_impl(Song *song) {
-    enable_speaker();
+    enable_speaker(); // Enable the speaker before playing the song
     for (uint32_t i = 0; i < song->length; i++) {
-        Note* note = &song->notes[i];
+        Note* note = &song->notes[i]; // Get the current note
         printf("Note: %d, Freq=%d, Sleep=%d\n", i, note->frequency, note->duration);
-        play_sound(note->frequency);
-        sleep_interrupt(note->duration);
-        stop_sound();
-
-        
+        play_sound(note->frequency); // Play the current note
+        sleep_interrupt(note->duration); // Wait for the duration of the note
+        stop_sound(); // Stop the sound before playing the next note
     }
-    disable_speaker();
+    disable_speaker(); // Disable the speaker after the song is played
 }
 
+// function to play a song
 void play_song(Song *song) {
-    play_song_impl(song);
+    play_song_impl(song); // Call the internal implementation to play the song
 }
 
 

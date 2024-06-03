@@ -19,7 +19,6 @@ void isr_handler(registers_t regs)
     struct int_handler_t intrpt = int_handlers[int_no];
     if (intrpt.handler != 0)
     {
-
         intrpt.handler(&regs, intrpt.data);
     }
     

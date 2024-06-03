@@ -1,7 +1,7 @@
 {
-    "cmake.buildDirectory": "${workspaceFolder}/build/35_Stack_Overflowers",
-    "cmake.sourceDirectory": "${workspaceFolder}/src/35_Stack_Overflowers",
-    "C_Cpp.errorSquiggles": "enabled",
+    "cmake.buildDirectory": "${workspaceFolder}/build/group_name",
+    "cmake.sourceDirectory": "${workspaceFolder}/src/group_name",
+    "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "cstddef": "cpp",
         "*.tcc": "cpp",
@@ -14,9 +14,7 @@
         "multiboot2.h": "c",
         "interrupts.h": "c",
         "memory.h": "c",
-        "limits.h": "c",
-        "descriptor_tables.h": "c",
-        "string.h": "c"
+        "limits.h": "c"
     }
 
 }

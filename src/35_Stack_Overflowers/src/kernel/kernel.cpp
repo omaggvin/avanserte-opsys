@@ -127,7 +127,12 @@ int kernel_main(){
         printf("Finished playing the song.\n");
     }
 
-
+    void* some_memory = malloc(12345); 
+    void* memory2 = malloc(54321); 
+    void* memory3 = malloc(13331);
+    char* memory4 = new char[1000]();
+    print_memory_layout();
+    
     // Main loop
     printf("Kernel main loop\n");
     while(true) {

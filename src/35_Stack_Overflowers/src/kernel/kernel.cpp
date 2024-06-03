@@ -48,12 +48,16 @@ extern "C" int kernel_main(void);
 int kernel_main(){
 
     // Set up interrupt handlers
-    register_interrupt_handler(3, [](registers_t* regs, void* context) {
-        printf("Interrupt 3 - OK\n");
+    
+    register_interrupt_handler(1, [](registers_t* regs, void* context) {
+        printf("Interrupt 1 - OK\n");
+    }, NULL);
+    register_interrupt_handler(2, [](registers_t* regs, void* context) {
+        printf("Interrupt 2 - OK\n");
     }, NULL);
 
-    register_interrupt_handler(4, [](registers_t* regs, void* context) {
-        printf("Interrupt 4 - OK\n");
+    register_interrupt_handler(3, [](registers_t* regs, void* context) {
+        printf("Interrupt 3 - OK\n");
     }, NULL);
 
     register_interrupt_handler(14, [](registers_t* regs, void* context) {
@@ -83,9 +87,9 @@ int kernel_main(){
     }, NULL);
 
     // Trigger interrupts to test handlers
+    asm volatile ("int $0x1");
+    asm volatile ("int $0x2");
     asm volatile ("int $0x3");
-    asm volatile ("int $0x4");
-
     // Enable interrupts
     asm volatile("sti");
 
